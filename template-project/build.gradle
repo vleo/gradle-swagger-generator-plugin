@@ -1,3 +1,29 @@
 plugins {
+    id 'java'
     id 'org.hidetake.swagger.generator' version '2.8.0'
 }
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // Add dependency for Swagger Codegen CLI
+    swaggerCodegen 'io.swagger:swagger-codegen-cli:2.2.3'
+    compile 'io.swagger:swagger-annotations:1.5.10'
+    compile "joda-time:joda-time:2.9.9"
+}
+
+swaggerSources {
+    backend {
+        inputFile = file('api.yaml')
+        code {
+            language = 'java'
+            configFile = file('config.json')
+            components = ['models', 'apis']
+        }
+    }
+}
+
+compileJava.dependsOn swaggerSources.backend.code
+sourceSets.main.java.srcDir swaggerSources.backend.code.outputDir

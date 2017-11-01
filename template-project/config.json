@@ -1,0 +1,10 @@
+{
+  "useRxJava2": true,
+  "java8": false,
+  "library": "retrofit2",
+  "dateLibrary": "joda",
+  "hideGenerationTimestamp": true,
+  "modelPackage": "backend.model",
+  "apiPackage": "backend.api",
+  "invokerPackage": "backend"
+}
