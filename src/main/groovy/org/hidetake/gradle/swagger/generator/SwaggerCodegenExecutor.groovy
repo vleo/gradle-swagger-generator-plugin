@@ -89,6 +89,7 @@ class SwaggerCodegenExecutor {
             def originalContextClassLoader = Thread.currentThread().contextClassLoader
             Thread.currentThread().contextClassLoader = swaggerCodegenClass.classLoader
             try {
+                log.debug("Invoke ${swaggerCodegenClass}.main($args)")
                 swaggerCodegenClass.invokeMethod('main', args as String[])
             } finally {
                 Thread.currentThread().contextClassLoader = originalContextClassLoader
